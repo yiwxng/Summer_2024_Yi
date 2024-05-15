@@ -52,5 +52,24 @@ each arm has a reward distribution, each time sample happens, it will randomly s
 - 
 
 
-## what are the potential problem with TS?
-- high type 2 error (false positive)
+
+## CTS background: 
+CTS is from TS, a Bayesian probabllistic approach that treat the options’ reward like a multivariable distribution, and randomly sample from each distribution to balance exploit and explore. CTS is an extension to TS, where we incorporate context at the moment of given reward to optimize decision-making.
+
+## definition
+### key component 
+- prior distribution
+- likelihood
+- posterior 
+- posterior is proportional to prior * likelihood
+
+### cons of TS:
+- effectiveness of using TS depends on goodness of priors. 
+- bad priors may need to suboptimal performance, especially in the early stages of learning.
+- or no priors,
+
+- complex for non-conjugate priors distributions
+
+- although TS will eventually achieve optimal learning over time, the suboptimal learning may be dangerous in short term, high-stake situations.  
+
+- correctly model the reward distributions
