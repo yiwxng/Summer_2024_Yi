@@ -4,6 +4,7 @@ it is an approach to statistics and inference, different than frequentist.
 
 ### how does bayes differ from frequentist?
 
+___
 
 ### what is a heuristic? and how is ts a heuristic?
 A heuristic is an practical approach to problem solving that does not necessarily always lead to the most optimal solution. 
@@ -12,13 +13,17 @@ A heuristic is an practical approach to problem solving that does not necessaril
 ### If we already have optimal thereotical solutions, then why use heuristic?
 It is often used when the problem does not meet the preconditions, too computational or resource intensive, have to rerun the algorithm in a dynamic environment, real-time decision making.
 
-### what does "heuristic" mean for ts?
-It means that it can 
 
 ### what is the relationship between rl and mab?
 it is a simplier version of rl.
 
 ## what is MAB?
+It is a problem that seeks to balance between explore and exploit, when faced with many unfamilar options, with the end goal of maximizing your reward. 
+
+This is an example slide that I created for CSSC 2024:
+![My Image](/CTS/mab_slide.png)
+
+note: this was a rough draft that did not get to fully explain what mab is due to short presentation time. 
 
 ### what is the goal of MAB?
 balancing exploit and explore, and minimize regret?
@@ -47,9 +52,18 @@ mab choosing actions
 
 
 ## how does ts work? 
-each arm has a reward distribution, each time sample happens, it will randomly sample a sample reward for each arm (does this approach handle the explore and exploit? since the random sampling ensures that not )
+each arm has a reward distribution, each time sample happens, it will randomly sample a sample reward for each arm (does this approach handle the explore and exploit? since the random sampling ensures that exploration of non-optimal arms alsoo happens)
 - then it will play the arm with highest sample reward 
-- 
+- but there will be a chance where we don't get to explore all options due to randomness of samples. 
+
+
+## Key Properties of TS & CTS: 
+- convergence to optimal arm over time (under stationary bandits)(bc of  what theorem and why?)
+- regret - as another way of measuring reward (why do wee have another way of measuring regret, what does this extra information tells us?)
+- effect size : larger effect size, faster convergence (what is effect size? when do we learn it ?)
+- empirically, ts outperforms UCB and e-greedy, especially under delayed rewards scenario
+- risk: due to its randomness nature, there will be a chance that the optimal arm did not get play/ allocated more 
+- too many contextual factor, increase in dimension, curse of dimensionality
 
 
 
@@ -63,13 +77,35 @@ CTS is from TS, a Bayesian probabllistic approach that treat the options’ rewa
 - posterior 
 - posterior is proportional to prior * likelihood
 
+### how does cts update ?
+since distribution of reward depends on the type of rewards (binary, continous), and the added contextual variables are extra info to be accounted for. the expected reward will have a regression model, and be linked to a linking function to calculate expexted reward for each arm. then update. 
+
+### questions:
+- how does the mean vector and covariance matrix change?
+- how does coefficients in regression change?
+- why do we need a linking function 
+
 ### cons of TS:
-- effectiveness of using TS depends on goodness of priors. 
-- bad priors may need to suboptimal performance, especially in the early stages of learning.
+- effectiveness of using TS depends on goodness of priors. (convergence rate??)
+- bad priors may lead to suboptimal performance, especially in the early stages of learning.
 - or no priors,
 
 - complex for non-conjugate priors distributions
 
 - although TS will eventually achieve optimal learning over time, the suboptimal learning may be dangerous in short term, high-stake situations.  
 
-- correctly model the reward distributions
+- correctly model the reward distributions/ reward regression
+
+ 
+## Difference between TS and CTS 
+
+| Element          | TS                                          | CTS                                             |
+|------------------|---------------------------------------------|-------------------------------------------------|
+| Model            | Probability distribution for rewards        | Regression model (e.g., linear model)            |
+| Context          | No                                           | Yes                                              |
+| Parameter        | theta                                 | beta                                  |
+| Prior            | ex. theta ~beta(a,b) | beta ~ N(mean vector, and )   |
+| Posterior        |  based on observed rewards           |  based on observed context-reward pairs   |
+| Action Selection | sample sampled value for each distribution and select max     | , select max |
+| Example          | Bernoulli rewards                           | Linear model with context                        |
+
