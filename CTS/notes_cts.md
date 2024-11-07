@@ -13,6 +13,9 @@ A heuristic is an practical approach to problem solving that does not necessaril
 ### If we already have optimal thereotical solutions, then why use heuristic?
 It is often used when the problem does not meet the preconditions, too computational or resource intensive, have to rerun the algorithm in a dynamic environment, real-time decision making.
 
+## what is rl 
+where an agent 
+
 
 ### what is the relationship between rl and mab?
 it is a simplier version of rl.
@@ -35,7 +38,13 @@ the different between the (highest arm mean reward x number of trials) - (the ac
 ### What is the difference between rl and mab?
 The difference is in mab, we try to find the best option, in rl we create the option from the interaction.
 Balancing the need to explore all options to find the best one and exploiting the best option once it is known
+- actions : rl creates, mab exist
+- state : rl agent needs to be aware of the state, no state in mab
+- long-term consequences : rl agent needs to be aware, mab only needs immediate rewards
 
+
+
+  
 Actions: rl choosing actions that not only affect immediate rewards, but also subsequent statesm and future rewards.
 mab choosing actions 
 
