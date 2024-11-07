@@ -19,6 +19,9 @@ where an agent
 
 ### what is the relationship between rl and mab?
 it is a simplier version of rl.
+- agents that makes sequential decisions depending on the prior state 
+- reward
+- explore and exploit 
 
 ## what is MAB?
 It is a problem that seeks to balance between explore and exploit, when faced with many unfamilar options, with the end goal of maximizing your reward. 
